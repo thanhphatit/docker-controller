@@ -1,6 +1,6 @@
 MIT License with Time-Limited Free Usage
 
-Docker-Controller
+CICD-Manager
 
 Copyright (c) [2023] [thanhphatit] - [www.itblognote.com]
 

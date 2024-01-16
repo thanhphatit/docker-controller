@@ -1,8 +1,6 @@
-# DOCKER CONTROLLER
+# CICD MANAGER
 
 This is tools created by bash shell to support for DevOps Engineer
-
-- Create images and push to private server
 
 NOTE:
 
@@ -69,6 +67,7 @@ Case you want add Docker Images and Helm Chats same dir or you using ECR for Doc
 
 ```
 environments/itblognote/aws/ecr-name/
+                                |- charts/
                                 |- images/
                                     |- ubuntu/
                                         |- apache2    
@@ -99,3 +98,74 @@ Example Path: `environments/itblognote/aws/ecr-name/images/ubuntu/apache2/delete
 
 * `delete.lock` Delete all docker images
 * `delete.lock.tag` Delete with images and tag
+
+### Helm
+
+### Shortened Name
+
+| Name | chartmuseum | azure | aws |
+| --- | --- | --- | --- |
+| service_provider | chartmuseum | azure | aws |
+| service_type | http | acr | s3 |
+
+### Path
+
+*  environments/<company-name>/<cloud>/<name-service>
+
+service_provider: <chartmuseum>/<azure>/<aws>
+service_type: <http>/<acr>/<s3>
+service_identifier: <docker-registry-name>/<acr-name>/<s3-bucket-name>
+service_environment: <company-name>
+
+- Example: environments/dev/aws/s3-bucket/charts
+- Example: environments/itblognote/azure/itblognote-images-acr/charts
+
+With Helm we will have folder charts to easy control with docker
+
+### Metadata.conf
+
+Example:
+
+```
+service_provider: aws
+service_type: s3
+service_identifier: itblognote-s3
+service_environment: itblognote
+```
+
+## Helm Release
+
+- Use character dash `-` between words, not using character underscore `_` between words.
+
+```
+aia-app-abc => VALID
+```
+
+```
+aia_app_abc => NOT VALID
+```
+
+## Kubernetes
+
+### Shortened Name
+
+| Name | docker | azure | aws | digital ocean | google cloud |
+| --- | --- | --- | --- | --- | --- |
+| service_provider | docker | azure | aws | doc | gcp |
+| service_type | docker | acr | ecr | doks | gcr |
+
+service_identifier = context cluster
+
+
+## Config
+
+### Shortened Name
+
+| Name | azure | aws | digital ocean |
+| --- | --- | --- | --- | --- |
+| service_provider | azure | aws | doc |
+| service_type | aks, fa | eks | doks |
+| service_identifier | name cluster, resource group |
+
+Name folder = release name
+## Version
